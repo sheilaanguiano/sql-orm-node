@@ -53,7 +53,9 @@ module.exports = (sequelize) => {
       allowNull: false,
       defaultValue: false,
      },
-  }, { sequelize });
+  }, { 
+    timestamps: false, 
+    sequelize });
 
   return Movie;
 };
