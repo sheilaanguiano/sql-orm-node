@@ -12,7 +12,7 @@ const { Movie, Person } = db.models;
       releaseDate: '2006-04-21',
       isAvailableOnVHS: false,
     });
-    console.log(movie.toJSON());
+    //console.log(movie.toJSON());
 
     const movie2 = await Movie.create({
       title: 'Old boy',
@@ -21,13 +21,30 @@ const { Movie, Person } = db.models;
       isAvailableOnVHS: false,
 
     });
-    console.log(movie2.toJSON());
+    //console.log(movie2.toJSON());
 
-    const actor1 = await Person.create({
+    const actor = await Person.create({
       firstName: 'Min-sik',
       lastName: 'Choi'
     });
-    console.log(actor1.toJSON());
+    //console.log(actor.toJSON());
+
+      // New instance
+    const movie3 = await Movie.build({
+      title: 'Toy Story 3',
+      runtime: 103,
+      releaseDate: '2010-06-18',
+      isAvailableOnVHS: false,
+    });
+    //console.log(movie3.toJSON());
+
+    const movieById = await Movie.findByPk();
+    const movieByRuntime = await Movie.findOne({ 
+      where: { runtime: 120 }
+    });
+    const allMovies = await. Movie.findAll();
+    console.log( movies.map(movie => movie.toJSON()) );
+   
 
   } catch (error) {
     if (error.name === 'SequelizeValidationError') { 
